@@ -45,10 +45,8 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-    try {
-
-    } catch(err) {
-        res.status(500).json({ message: err.message });
-    }
-
+    Notice.findByIdAndDelete(req.params.id, (err, noticeRemoved) => {
+        if (err) console.error(err);
+        res.status(200).send(noticeRemoved);
+    });
 };

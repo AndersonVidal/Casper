@@ -6,9 +6,6 @@ router.get('/', noticeController.getAll);
 router.get('/:id', noticeController.getOne);
 router.post('/', noticeController.create)
 router.put('/:id', noticeController.update);
-
-router.delete('/:id', (req, res) => {
-
-});
+router.delete('/:id', noticeController.delete);
 
 module.exports = router;

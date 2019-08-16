@@ -23,3 +23,5 @@ Content-Type: application/json
     "notice_url": "https://www.youtube.com/watch?v=fgTGADljAeg",
     "description": "TESTE TESTE TESTE TESTE"
 }
+###
+DELETE http://localhost:3000/notice/5d56bdfc276dcf2cf4a6d957
