@@ -1,57 +1,45 @@
-import mongoose from 'mongoose';
-import notice from '../models/noticeModel';
+const mongoose = require('mongoose');
+const Notice = require('../models/notice.model')
 
-exports.getNotice = (req, res) => {
-    notice.findById(req.params.noticeId, (err, notice) => {
-        if (err) {
-            res.send(err);
-        }
-        res.json(notice);
-    });
+exports.getAll = async (req, res) => {
+    const notices = Notice.find();
+    res.send(notices);
 };
 
-exports.getAllNotices = (req, res) => {
-    notice.find({}, (err, notices) => {
-        if (err) {
-            res.send(err);
-        }
-        res.json(notices);
-    });
+exports.getOne = async (req, res) => {
+    Notice.findById(req.params.id, (next, err, notice) => {
+        if (err) return next(err);
+        res.status(200).send(notice);
+    })
 };
 
-exports.createNotice = (req, res) => {
-    const newNotice = new notice(req.body);
-
-    newNotice.save((err, notice) => {
-        if (err) {
-            res.send(err);
-        }        
-        res.json(notice);
+exports.create = async (req, res) => {
+    let notice = new Notice({
+        title: req.body.title,
+        image_url: req.body.image_url,
+        notice_url: req.body.notice_url,
+        topic: req.body.topic,
+        description: req.body.description,
     });
+    Notice.create(notice, (err) => {
+        if (err) console.error(err);
+        res.status(201).send("Criado com sucesso!");
+    })
 };
 
-exports.updateNotice = (req, res) => {
-    notice.findOneAndUpdate({
-        _id: req.params.noticeId
-    }, req.body,
-        (err, notice) => {
-            if (err) {
-                res.send(err);
-            }
-            res.json(notice);
-        });
+exports.update = (req, res) => {
+    try {
+
+    } catch(err) {
+    res.status(500).json({ message: err.message });
+    }
 };
 
-exports.deleteNotice = (req, res) => {
-    notice.remove({
-        _id: req.params.noticeId
-    }, (err) => {
-        if (err) {
-            res.send(err);
-        }
+exports.delete = (req, res) => {
+    try {
 
-        res.json({
-            message: `Notice ${req.params.noticeId} successfully deleted`
-        });
-    });
+    } catch(err) {
+        res.status(500).json({ message: err.message });
+    }
+
 };

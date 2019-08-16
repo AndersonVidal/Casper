@@ -1,11 +1,16 @@
-import express from 'express';
-import mongoose from 'mongoose';
+require('dotenv').config()
 
-import routes from './routes/index';
+const express = require('express');
+const mongoose = require('mongoose');
+
+const routeIndex = require('./routes/index');
 
 const app = express();
 
-mongoose.connect('mongodb://localhost');
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
+const db = mongoose.connection;
+db.on('error', (error) => console.error(error));
+db.once('open', () => console.log('Connected to Database'));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -22,6 +27,6 @@ app.use((err, req, res, next) => {
     next();
 });
 
-routes(app);
+routeIndex(app);
 
-export default app;
+module.exports = app;

@@ -1,12 +1,4 @@
-import notice from '../controllers/noticeController';
-
-export default (app) => {
-    app.route('/notice')
-        .get(notice.getAllNotices)
-        .post(notice.createNotice);
-    
-    app.route('/notice/:noticeId')
-        .get(notice.getNotice)
-        .put(notice.updateNotice)
-        .delete(notice.deleteNotice);
-};
+module.exports = (app) => {
+    const noticeRouter = require('./notice.router');
+    app.use('/notice', noticeRouter);
+}
