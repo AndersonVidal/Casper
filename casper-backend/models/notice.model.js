@@ -5,7 +5,6 @@ const noticeScheme = new Schema({
     title: {
         type: String,
         required: true,
-        unique: true
     },
     image_url: {
         type: String,

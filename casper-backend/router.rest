@@ -1,12 +1,23 @@
 GET http://localhost:3000/notice/
 ###
-GET http://localhost:3000/notice/5d56b26f39dca40e1892f3d3
+GET http://localhost:3000/notice/5d56bdfc276dcf2cf4a6d957
 ###
 POST http://localhost:3000/notice/
 Content-Type: application/json
 
 {
     "title": "NoticiaTeste2",
+    "image_url": "https://www.youtube.com/watch?v=fgTGADljAeg",
+    "topic": "teste",
+    "notice_url": "https://www.youtube.com/watch?v=fgTGADljAeg",
+    "description": "TESTE TESTE TESTE TESTE"
+}
+###
+PUT http://localhost:3000/notice/5d56bdfc276dcf2cf4a6d957
+Content-Type: application/json
+
+{
+    "title": "NoticiaEditada",
     "image_url": "https://www.youtube.com/watch?v=fgTGADljAeg",
     "topic": "teste",
     "notice_url": "https://www.youtube.com/watch?v=fgTGADljAeg",
