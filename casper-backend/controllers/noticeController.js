@@ -2,8 +2,10 @@ const mongoose = require('mongoose');
 const Notice = require('../models/notice.model')
 
 exports.getAll = async (req, res) => {
-    const notices = Notice.find();
-    res.send(notices);
+    Notice.find({}, (err, notices) => {
+        if (err) console.error(err);
+        res.status(200).send(notices);
+    });
 };
 
 exports.getOne = async (req, res) => {
@@ -23,16 +25,12 @@ exports.create = async (req, res) => {
     });
     Notice.create(notice, (err) => {
         if (err) console.error(err);
-        res.status(201).send("Criado com sucesso!");
+        res.status(201).send(notice);
     })
 };
 
 exports.update = (req, res) => {
-    try {
-
-    } catch(err) {
-    res.status(500).json({ message: err.message });
-    }
+    
 };
 
 exports.delete = (req, res) => {
