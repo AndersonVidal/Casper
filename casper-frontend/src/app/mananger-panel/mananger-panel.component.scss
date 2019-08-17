@@ -1,0 +1,39 @@
+
+
+.header {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    font-family: monospace;
+    font-size: 25px;
+    background-color: cornflowerblue;
+    color: white;
+}
+
+.noticeTable {
+    position: absolute;
+    width: 95%;
+    margin-left: 2%;
+    margin-top: 8%;
+}
+
+.footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: right;
+}
+
+.addButton {
+    transform: translate(-5%, -50%);
+    text-align: right;
+}
+
+h1 {
+	text-align: center;
+	font-size: 1.25em;
+	font-weight: normal;
+}
