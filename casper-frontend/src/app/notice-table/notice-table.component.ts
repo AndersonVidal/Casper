@@ -48,6 +48,6 @@ export class NoticeTableComponent implements OnInit {
   ngOnInit() {
   }
 
-  displayedColumns: string[] = ['id', 'title', 'topic', 'description', 'notice_url', 'image_url'];
+  displayedColumns: string[] = ['id', 'title', 'topic', 'description', 'notice_url', 'image_url', 'actions'];
   dataSource = NOTICE_DATA;
 }
