@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from "@angular/material";
+import { NoticeFormModalComponent } from '../notice-form-modal/notice-form-modal.component';
 
 @Component({
   selector: 'app-mananger-panel',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManangerPanelComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '100vh';
+    
+    this.dialog.open(NoticeFormModalComponent, dialogConfig);
   }
-
 }

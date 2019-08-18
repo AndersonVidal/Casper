@@ -1,40 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-export interface Notice {
-  id: number;
-  title: string;
-  topic: string;
-  description: string;
-  notice_url: string;
-  image_url: string;
-}
-
-const NOTICE_DATA: Notice[] = [
-  {
-    id: 1, 
-    title: 'Hydrogen', 
-    topic: 'Periodic Elem', 
-    description: 'Elem and periodic',
-    notice_url: 'linklink', 
-    image_url: 'linklink'
-  },
-  {
-    id: 2, 
-    title: 'Helium', 
-    topic: 'Periodic Elem', 
-    description: 'Elem and periodic',
-    notice_url: 'linklink', 
-    image_url: 'linklink'
-  },
-  {
-    id: 3, 
-    title: 'Lithium', 
-    topic: 'Periodic Elem', 
-    description: 'Elem and periodic',
-    notice_url: 'linklink', 
-    image_url: 'linklink'
-  },
-];
+import { Notice } from '../models/notice';
+import { NoticeAPIService } from '../services/notice-api.service'
 
 @Component({
   selector: 'app-notice-table',
@@ -43,11 +9,20 @@ const NOTICE_DATA: Notice[] = [
 })
 export class NoticeTableComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _api: NoticeAPIService) { }
+
+  displayedColumns: string[] = ['_id', 'title', 'topic', 'description', 'notice_url', 'image_url', 'actions'];
+  dataSource: Notice[];
+  isLoadingResults;
 
   ngOnInit() {
+    this._api.getNotices().subscribe(res => {
+      this.dataSource = res;
+      console.log(this.dataSource);
+      this.isLoadingResults = false;
+    }, err => {
+      console.log(err);
+      this.isLoadingResults = false;
+    });
   }
-
-  displayedColumns: string[] = ['id', 'title', 'topic', 'description', 'notice_url', 'image_url', 'actions'];
-  dataSource = NOTICE_DATA;
 }

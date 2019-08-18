@@ -6,18 +6,27 @@ import { AppComponent } from './app.component';
 import { ManangerPanelComponent } from './mananger-panel/mananger-panel.component';
 import { NoticeTableComponent } from './notice-table/notice-table.component';
 import { MaterialModule } from './material.module';
+import { NoticeFormModalComponent } from './notice-form-modal/notice-form-modal.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'; 
 
 @NgModule({
   declarations: [
     AppComponent,
     ManangerPanelComponent,
-    NoticeTableComponent
+    NoticeTableComponent,
+    NoticeFormModalComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
+  entryComponents: [
+    NoticeFormModalComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
