@@ -9,6 +9,8 @@ import { NoticeFormModalComponent } from '../notice-form-modal/notice-form-modal
 })
 export class ManangerPanelComponent implements OnInit {
 
+  newData = false;
+
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() { }
@@ -19,6 +21,12 @@ export class ManangerPanelComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = '100vh';
     
-    this.dialog.open(NoticeFormModalComponent, dialogConfig);
+    const dialogRef = this.dialog.open(NoticeFormModalComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(data => {
+        if (data) {
+          this.newData = !this.newData;
+        }
+      }
+    );
   }
 }

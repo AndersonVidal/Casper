@@ -1,56 +1,59 @@
 <h2 mat-dialog-title>Fórmulario de notícia</h2>
+<form [formGroup]="noticeForm" (ngSubmit)="save(noticeForm.value)">
 
-<mat-dialog-content [formGroup]="form" (ngSubmit)="save(noticeForm.value)">
-    <div>
-        <mat-form-field class="fullWitdh">
-            <input  matInput
-                name="title"
-                placeholder="Título da notícia"
-                formControlName="title">
-        </mat-form-field>
-        
-    </div>
-    <div>
-        <mat-form-field class="fullWitdh">
-            <input  matInput
-                name="topic"
-                placeholder="Tema/Assunto"
-                formControlName="topic">
-        </mat-form-field>
-    </div>
-    <div>
-        <mat-form-field class="fullWitdh">
-            <textarea   matInput
-                        name="description"
-                        placeholder="Breve descrição"
-                        formControlName="description">
-            </textarea>
-        </mat-form-field>
-    </div>
-    <div>
-        <mat-form-field class="fullWitdh">
-            <input  matInput
-                name="notice_url"
-                placeholder="Link da notícia"
-                formControlName="notice_url">
-        </mat-form-field>
-    </div>
-    <div>
-        <mat-form-field class="fullWitdh">
-            <input  matInput
-                name="image_url"
-                placeholder="Link da imagem de referência"
-                formControlName="image_url">
-        </mat-form-field>
-    </div>
+<mat-dialog-content>
+        <div>
+            <mat-form-field class="fullWitdh">
+                <input  matInput
+                    name="title"
+                    placeholder="Título da notícia"
+                    formControlName="title">
+            </mat-form-field>
+            
+        </div>
+        <div>
+            <mat-form-field class="fullWitdh">
+                <input  matInput
+                    name="topic"
+                    placeholder="Tema/Assunto"
+                    formControlName="topic">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field class="fullWitdh">
+                <textarea   matInput
+                            name="description"
+                            placeholder="Breve descrição"
+                            formControlName="description">
+                </textarea>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field class="fullWitdh">
+                <input  matInput
+                    name="notice_url"
+                    placeholder="Link da notícia"
+                    formControlName="notice_url">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field class="fullWitdh">
+                <input  matInput
+                    name="image_url"
+                    placeholder="Link da imagem de referência"
+                    formControlName="image_url">
+            </mat-form-field>
+        </div>
+    
 </mat-dialog-content>
 
 <mat-dialog-actions class="actions row">
     <div class="item2">
-        <button class="mat-raised-button" (click)="close()">Cancelar</button>
+        <button type="reset" class="mat-raised-button" (click)="close()">Cancelar</button>
     </div>
     <div class="item1">
-        <button type="submit" [disabled]="!Form.valid" 
+        <button type="submit" [disabled]="!noticeForm.valid" 
                 class="mat-raised-button mat-primary">Salvar</button>
     </div>
 </mat-dialog-actions>
+</form>

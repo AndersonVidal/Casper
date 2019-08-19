@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog, MatDialogConfig, MatDialogRef } from "@angular/material";
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
@@ -35,10 +35,11 @@ export class NoticeFormModalComponent implements OnInit {
   }
 
   save(form: NgForm) {
+    console.log(form);
     this.isLoadingResults = true;
     this._api.addNotice(form).subscribe(res => {
-      const id = res['_id'];
       this.isLoadingResults = false;
+      this.dialogRef.close(res);
     }, (err) => {
       console.log(err);
       this.isLoadingResults = false;

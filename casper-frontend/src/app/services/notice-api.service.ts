@@ -5,7 +5,12 @@ import { catchError, tap, map } from 'rxjs/operators';
 import { Notice } from '../models/notice';
 
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': '*',
+    'Access-Control-Allow-Headers': '*'
+  })
 };
 const apiUrl = 'http://localhost:3000/notice';
 

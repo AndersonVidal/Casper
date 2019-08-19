@@ -2,8 +2,10 @@ const mongoose = require('mongoose');
 const Notice = require('../models/notice.model')
 
 exports.getAll = async (req, res) => {
+    
     Notice.find({}, (err, notices) => {
         if (err) console.error(err);
+        console.log(notices);
         res.status(200).send(notices);
     });
 };
