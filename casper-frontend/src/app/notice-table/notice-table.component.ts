@@ -24,7 +24,6 @@ export class NoticeTableComponent implements OnInit, OnChanges {
     this._api.getNotices().subscribe(res => {
       this.dataSource = new MatTableDataSource<any>(res);
       this.dataSource.paginator = this.paginator;
-      console.log(this.dataSource);
       for (let index = 0; index < this.dataSource.length; index++) {
         this.dataSource[index].filteredData.id = index + 1;
       }
@@ -37,5 +36,12 @@ export class NoticeTableComponent implements OnInit, OnChanges {
 
   ngOnChanges(newData) {
     this.ngOnInit();
+  }
+
+  remove(id) {
+    this._api.deleteNotice(id).subscribe(res => {
+      console.log("Notice id=" + id + " has been deleted");
+      this.ngOnInit();
+    });
   }
 }
