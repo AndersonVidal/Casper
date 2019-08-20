@@ -6,7 +6,7 @@ POST http://localhost:3000/notice/
 Content-Type: application/json
 
 {
-    "title": "NoticiaTeste2",
+    "title": "NoticiaTeste3",
     "image_url": "https://www.youtube.com/watch?v=fgTGADljAeg",
     "topic": "teste",
     "notice_url": "https://www.youtube.com/watch?v=fgTGADljAeg",
@@ -24,4 +24,4 @@ Content-Type: application/json
     "description": "TESTE TESTE TESTE TESTE"
 }
 ###
-DELETE http://localhost:3000/notice/5d56bdfc276dcf2cf4a6d957
+DELETE http://localhost:3000/notice/5d5aa81b694cd627e0bd1907
